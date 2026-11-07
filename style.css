@@ -1,0 +1,425 @@
+/* ==========================================================================
+   kerad.org — stylesheet
+   Edit the variables below to change colours site-wide.
+   ========================================================================== */
+
+:root {
+  --purple:      #3c1d8a;   /* logo background / top bar */
+  --purple-dark: #2c1468;   /* nav hover */
+  --purple-tint: #f5f2fc;   /* very light purple backgrounds */
+  --gold:        #d9a800;   /* accent */
+  --gold-dark:   #bf9400;
+  --text:        #333333;
+  --muted:       #6b6b6b;
+  --border:      #dcdcdc;
+  --bg-grey:     #f5f5f5;
+}
+
+* { box-sizing: border-box; }
+
+html, body { margin: 0; padding: 0; }
+
+body {
+  font-family: "Roboto", "Helvetica Neue", Arial, sans-serif;
+  font-size: 15px;
+  line-height: 1.65;
+  color: var(--text);
+  background: #ffffff;
+  -webkit-font-smoothing: antialiased;
+}
+
+a { color: var(--purple); text-decoration: none; }
+a:hover { text-decoration: underline; }
+
+h1, h2, h3, h4 {
+  margin: 0 0 14px;
+  color: #222222;
+  font-weight: 400;
+  line-height: 1.25;
+}
+h2 { font-size: 26px; }
+h3 { font-size: 18px; font-weight: 500; }
+p  { margin: 0 0 16px; }
+
+.container {
+  max-width: 1140px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+/* --------------------------------------------------------------------------
+   Header + navigation
+   -------------------------------------------------------------------------- */
+
+.site-header { background: var(--purple); }
+
+.header-inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 62px;
+}
+
+/* Logo — recreated in text so it always matches the bar behind it */
+.logo {
+  font-size: 26px;
+  font-weight: 700;
+  letter-spacing: -0.5px;
+  text-decoration: none;
+  line-height: 1;
+}
+.logo:hover { text-decoration: none; }
+.logo-name { color: #ffffff; }
+.logo-tld  { color: var(--gold); margin-left: 5px; }
+
+.nav {
+  list-style: none;
+  display: flex;
+  margin: 0;
+  padding: 0;
+}
+.nav > li { position: relative; }
+
+.nav > li > a,
+.nav > li > .nav-link {
+  display: block;
+  padding: 0 16px;
+  line-height: 62px;
+  color: rgba(255, 255, 255, 0.88);
+  font-size: 13px;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.6px;
+  text-decoration: none;
+  cursor: pointer;
+  transition: background-color 0.15s ease, color 0.15s ease;
+}
+
+.nav > li > a:hover,
+.nav > li > .nav-link:hover,
+.nav > li:focus-within > .nav-link {
+  background: var(--purple-dark);
+  color: #ffffff;
+  text-decoration: none;
+}
+
+.nav > li.active > a {
+  color: #ffffff;
+  box-shadow: inset 0 -3px 0 var(--gold);
+}
+
+.caret { font-size: 10px; margin-left: 3px; }
+
+/* Dropdown */
+.dropdown-menu {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  min-width: 180px;
+  margin: 0;
+  padding: 4px 0;
+  list-style: none;
+  background: #ffffff;
+  border: 1px solid var(--border);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.15);
+  display: none;
+  z-index: 20;
+}
+.has-dropdown:hover .dropdown-menu,
+.has-dropdown:focus-within .dropdown-menu { display: block; }
+
+.dropdown-menu a {
+  display: block;
+  padding: 9px 16px;
+  color: var(--text);
+  font-size: 14px;
+  text-decoration: none;
+}
+.dropdown-menu a:hover {
+  background: var(--purple-tint);
+  color: var(--purple);
+  text-decoration: none;
+}
+
+/* --------------------------------------------------------------------------
+   Hero (home page only)
+   -------------------------------------------------------------------------- */
+
+.hero {
+  background: var(--purple);
+  color: #ffffff;
+  padding: 72px 0 78px;
+  border-bottom: 4px solid var(--gold);
+}
+.hero h1 {
+  color: #ffffff;
+  font-size: 42px;
+  font-weight: 300;
+  margin: 0 0 18px;
+}
+.hero p {
+  font-size: 18px;
+  font-weight: 300;
+  color: rgba(255, 255, 255, 0.85);
+  max-width: 640px;
+  margin: 0 0 30px;
+}
+
+/* --------------------------------------------------------------------------
+   Buttons
+   -------------------------------------------------------------------------- */
+
+.btn {
+  display: inline-block;
+  padding: 12px 28px;
+  font-size: 14px;
+  font-weight: 500;
+  border-radius: 2px;
+  border: 1px solid transparent;
+  cursor: pointer;
+  text-decoration: none;
+  transition: background-color 0.15s ease, border-color 0.15s ease;
+}
+.btn:hover { text-decoration: none; }
+
+.btn-primary { background: var(--gold); color: #241052; }
+.btn-primary:hover { background: var(--gold-dark); }
+
+.btn-outline {
+  background: transparent;
+  border-color: rgba(255, 255, 255, 0.55);
+  color: #ffffff;
+}
+.btn-outline:hover { background: rgba(255, 255, 255, 0.12); }
+
+/* --------------------------------------------------------------------------
+   Page head (inner pages)
+   -------------------------------------------------------------------------- */
+
+.page-head {
+  background: var(--bg-grey);
+  border-bottom: 1px solid var(--border);
+  padding: 34px 0;
+}
+.page-head h1 {
+  color: var(--purple);
+  font-size: 32px;
+  font-weight: 300;
+  margin: 0;
+}
+
+.breadcrumb {
+  font-size: 13px;
+  color: var(--muted);
+  padding: 12px 0;
+  border-bottom: 1px solid #eeeeee;
+}
+.breadcrumb a { color: var(--muted); }
+.breadcrumb a:hover { color: var(--purple); }
+.breadcrumb .sep { margin: 0 7px; color: #bbbbbb; }
+
+/* --------------------------------------------------------------------------
+   Sections
+   -------------------------------------------------------------------------- */
+
+.section { padding: 54px 0; }
+.section-grey {
+  background: var(--bg-grey);
+  border-top: 1px solid var(--border);
+  border-bottom: 1px solid var(--border);
+}
+
+.section-title {
+  font-size: 26px;
+  font-weight: 300;
+  color: #222222;
+  margin: 0 0 6px;
+}
+.section-intro {
+  color: var(--muted);
+  max-width: 680px;
+  margin: 0 0 34px;
+}
+
+/* Three-column feature row */
+.cols {
+  display: flex;
+  flex-wrap: wrap;
+  margin: 0 -14px;
+}
+.col {
+  flex: 1 1 300px;
+  padding: 0 14px;
+  margin-bottom: 20px;
+}
+
+.card {
+  border: 1px solid var(--border);
+  border-top: 3px solid var(--purple);
+  background: #ffffff;
+  padding: 24px 22px 20px;
+  height: 100%;
+}
+.card h3 { margin-bottom: 8px; color: var(--purple); }
+.card p  { color: var(--muted); margin-bottom: 14px; }
+
+.more { font-size: 14px; font-weight: 500; }
+.more .chev { margin-left: 3px; }
+
+/* Status label */
+.status {
+  display: inline-block;
+  font-size: 11px;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.7px;
+  color: #241052;
+  background: var(--gold);
+  padding: 3px 9px;
+  border-radius: 2px;
+  vertical-align: middle;
+  margin-left: 8px;
+}
+
+/* Product listing row */
+.product-row {
+  display: flex;
+  flex-wrap: wrap;
+  border: 1px solid var(--border);
+  border-left: 3px solid var(--gold);
+  padding: 26px 24px;
+  margin-bottom: 18px;
+}
+.product-row .product-main { flex: 1 1 420px; padding-right: 24px; }
+.product-row h3 { margin-bottom: 6px; }
+.product-row p  { color: var(--muted); margin-bottom: 0; }
+.product-row .product-action {
+  flex: 0 0 auto;
+  display: flex;
+  align-items: center;
+  padding-top: 10px;
+}
+
+/* --------------------------------------------------------------------------
+   Coming soon block
+   -------------------------------------------------------------------------- */
+
+.coming-soon {
+  text-align: center;
+  padding: 70px 20px 76px;
+}
+.coming-soon h2 {
+  font-size: 34px;
+  font-weight: 300;
+  color: var(--purple);
+  margin-bottom: 10px;
+}
+.coming-soon .rule {
+  width: 60px;
+  height: 3px;
+  background: var(--gold);
+  margin: 18px auto 22px;
+}
+.coming-soon p {
+  color: var(--muted);
+  max-width: 540px;
+  margin: 0 auto 16px;
+}
+
+/* --------------------------------------------------------------------------
+   Contact
+   -------------------------------------------------------------------------- */
+
+.contact-grid {
+  display: flex;
+  flex-wrap: wrap;
+  margin: 0 -18px;
+}
+.contact-form-col  { flex: 1 1 540px; padding: 0 18px; }
+.contact-info-col  { flex: 1 1 280px; padding: 0 18px; }
+
+.form-group { margin-bottom: 16px; }
+.form-group label {
+  display: block;
+  font-size: 13px;
+  font-weight: 500;
+  color: #444444;
+  margin-bottom: 5px;
+}
+.form-group input,
+.form-group textarea {
+  width: 100%;
+  padding: 9px 11px;
+  font-family: inherit;
+  font-size: 15px;
+  color: var(--text);
+  border: 1px solid #c4c4c4;
+  border-radius: 2px;
+  background: #ffffff;
+}
+.form-group input:focus,
+.form-group textarea:focus {
+  outline: none;
+  border-color: var(--purple);
+}
+.form-group textarea { min-height: 150px; resize: vertical; }
+
+.info-box {
+  background: var(--purple-tint);
+  border: 1px solid #e0d9f3;
+  padding: 22px;
+}
+.info-box h3 { color: var(--purple); margin-bottom: 10px; }
+.info-box p  { color: var(--muted); margin-bottom: 10px; }
+.info-box .email { font-size: 16px; font-weight: 500; }
+
+/* --------------------------------------------------------------------------
+   Footer
+   -------------------------------------------------------------------------- */
+
+.site-footer {
+  background: var(--purple);
+  color: rgba(255, 255, 255, 0.75);
+  padding: 22px 0;
+  margin-top: 0;
+  font-size: 13px;
+}
+
+/* --------------------------------------------------------------------------
+   Small screens
+   -------------------------------------------------------------------------- */
+
+@media (max-width: 860px) {
+  .header-inner {
+    flex-direction: column;
+    height: auto;
+    padding-top: 14px;
+    padding-bottom: 6px;
+  }
+  .nav { flex-wrap: wrap; justify-content: center; }
+  .nav > li > a,
+  .nav > li > .nav-link { line-height: 42px; padding: 0 12px; }
+
+  .dropdown-menu {
+    position: static;
+    display: block;
+    border: none;
+    box-shadow: none;
+    background: transparent;
+    padding: 0 0 6px;
+    min-width: 0;
+  }
+  .dropdown-menu a {
+    color: rgba(255, 255, 255, 0.8);
+    font-size: 13px;
+    padding: 4px 12px;
+    text-align: center;
+  }
+  .dropdown-menu a:hover { background: transparent; color: #ffffff; }
+
+  .hero { padding: 48px 0 52px; }
+  .hero h1 { font-size: 32px; }
+  .hero p  { font-size: 16px; }
+
+  .product-row .product-main { padding-right: 0; margin-bottom: 14px; }
+}
